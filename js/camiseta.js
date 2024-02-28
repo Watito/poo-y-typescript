@@ -1,8 +1,13 @@
 //Clase(molde del objeto )
 var Camiseta = /** @class */ (function () {
-    function Camiseta() {
-    }
     //Metodos (funciones o acciones del objeto)
+    function Camiseta(color, modelo, marca, talla, precio) {
+        this.color = color;
+        this.modelo = modelo;
+        this.marca = marca;
+        this.talla = talla;
+        this.precio = precio;
+    }
     Camiseta.prototype.setColor = function (color) {
         this.color = color;
     };
@@ -11,8 +16,8 @@ var Camiseta = /** @class */ (function () {
     };
     return Camiseta;
 }());
-var camiseta = new Camiseta();
+var camiseta = new Camiseta("Rojo", "Manga Larga", "Nike", "L", 14);
 camiseta.setColor("Rojo");
-var playera = new Camiseta();
-playera.setColor("Azul");
-console.log(camiseta.getColor(), playera);
+// var playera = new Camiseta();
+// playera.setColor("Azul");
+console.log(camiseta);
