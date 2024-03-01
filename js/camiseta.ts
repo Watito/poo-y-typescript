@@ -1,5 +1,21 @@
+// Interface
+interface CamisetaBase{
+    setColor(color);
+    getColor();
+}
+
+// Decorador
+function estampar(logo:string){
+    return function(target: Function){
+        target.prototype.estampacion = function ():void {
+            console.log("Camiseta estampada con el logo de: "+logo);
+        }
+    }
+}
+
 //Clase(molde del objeto )
-class Camiseta {
+// @estampar('Gucci Gang')
+class Camiseta implements CamisetaBase {
   //Propiedades(Caracteristicas del objeto)
   private color: string;
   private modelo: string;
@@ -25,11 +41,25 @@ class Camiseta {
   }
 }
 
-var camiseta = new Camiseta("Rojo","Manga Larga","Nike","L",14);
+// Clase Hija
+class Sudadera extends Camiseta{
+    public capucha : boolean;
+    setCapucha(capucha:boolean){
+        this.capucha = capucha;
+    }
+    getCapucha(){
+        return this.capucha;
+    }
+}
 
-camiseta.setColor("Rojo");
 
-// var playera = new Camiseta();
-// playera.setColor("Azul");
 
+
+var camiseta = new Camiseta("Blanco","Manga corta","Adidas","L",1);
 console.log(camiseta);
+// camiseta.estampacion();
+
+var sudadera_nike = new Sudadera("Rojo","Manga Larga","Nike","L",2);
+sudadera_nike.setCapucha(true);
+sudadera_nike.setColor("Azul");
+console.log(sudadera_nike);
